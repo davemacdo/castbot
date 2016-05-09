@@ -2,6 +2,8 @@
 
 Castbot is an audio experiment by [David MacDonald](http://davidmacdonaldmusic.com) to generate an autonomous podcast.
 
+The feed is currently at <http://effing.work/castbot/castbot-feed.xml>
+
 ## Dependencies
 
 - ChucK to generate audio
