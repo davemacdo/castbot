@@ -14,3 +14,4 @@ The feed is currently at <http://effing.work/castbot/castbot-feed.xml>
 
 - 2016-05-09 v0.1
     - proof-of-concept
+    - runs manually
