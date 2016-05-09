@@ -2,7 +2,7 @@ require 'rss'
 require 'net/ftp' # for ftp uploads later
 require 'mp3info'
 require 'fileutils'
-require_relative './_config/config.rb'
+require_relative './config/config.rb'
 
 Dir.chdir(File.expand_path(File.dirname(__FILE__)))
 today = Time.new
