@@ -27,6 +27,45 @@
     <itunes:subtitle>an audio experiment by David MacDonald</itunes:subtitle>
     <itunes:summary>an audio experiment by David MacDonald</itunes:summary>
     <item>
+      <title>2016-05-10_test9.mp3</title>
+      <description>Generated 2016-05-10</description>
+      <pubDate>Tue, 10 May 2016 08:59:25 EDT</pubDate>
+      <itunes:image href="http://effing.work/castbot/castbot-art.png" />
+      <itunes:keywords>music,robot,experimental,art,bot,electroacoustic,ChucK</itunes:keywords>
+      <itunes:duration>00:00:26</itunes:duration>
+      <itunes:author>David MacDonald</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:subtitle>Generated 2016-05-10</itunes:subtitle>
+      <itunes:summary>Generated 2016-05-10</itunes:summary>
+      <enclosure url="http://effing.work/castbot/mp3/2016-05-10_test9.mp3" length="259702" type="audio/mpeg" />
+    </item>
+    <item>
+      <title>2016-05-10_test8.mp3</title>
+      <description>Generated 2016-05-10</description>
+      <pubDate>Tue, 10 May 2016 01:28:19 EDT</pubDate>
+      <itunes:image href="http://effing.work/castbot/castbot-art.png" />
+      <itunes:keywords>music,robot,experimental,art,bot,electroacoustic,ChucK</itunes:keywords>
+      <itunes:duration>00:00:29</itunes:duration>
+      <itunes:author>David MacDonald</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:subtitle>Generated 2016-05-10</itunes:subtitle>
+      <itunes:summary>Generated 2016-05-10</itunes:summary>
+      <enclosure url="http://effing.work/castbot/mp3/2016-05-10_test8.mp3" length="283777" type="audio/mpeg" />
+    </item>
+    <item>
+      <title>2016-05-10_test7.mp3</title>
+      <description>Generated 2016-05-10</description>
+      <pubDate>Tue, 10 May 2016 01:25:47 EDT</pubDate>
+      <itunes:image href="http://effing.work/castbot/castbot-art.png" />
+      <itunes:keywords>music,robot,experimental,art,bot,electroacoustic,ChucK</itunes:keywords>
+      <itunes:duration>00:00:23</itunes:duration>
+      <itunes:author>David MacDonald</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:subtitle>Generated 2016-05-10</itunes:subtitle>
+      <itunes:summary>Generated 2016-05-10</itunes:summary>
+      <enclosure url="http://effing.work/castbot/mp3/2016-05-10_test7.mp3" length="235712" type="audio/mpeg" />
+    </item>
+    <item>
       <title>2016-05-09_test6.mp3</title>
       <description>Generated 2016-05-09</description>
       <pubDate>Mon, 09 May 2016 14:10:02 EDT</pubDate>

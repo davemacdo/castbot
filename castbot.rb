@@ -16,7 +16,7 @@ pubDate = today.strftime("%a, %d %b %Y %H:%M:%S %Z") #Sun, 08 May 2016 12:00:00 
 make_wav = "chuck Machine-test.ck -s"
 
 # Shell command to convert to mp3 and assign it today's date
-make_mp3 = "ffmpeg -i wav/temp.wav mp3/#{mp3file}"
+make_mp3 = "avconv -i wav/temp.wav mp3/#{mp3file}"
 
 # Run shell commands
 `#{make_wav}`
