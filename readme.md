@@ -12,6 +12,11 @@ The feed is currently at <http://effing.work/castbot/castbot-feed.xml>
 
 ## Changelog
 
+- 2016-05-14 v0.2
+    - Flexible tempo
+    - Multiple shakers in polyrhythmic relationships
+    - Removed jingly shakers
+    - New metadata in feed
 - 2016-05-10 v0.1.1
     - changed ffmpeg to libav (My Raspberry Pi seemed to be allergic to ffmpeg.)
 - 2016-05-09 v0.1
