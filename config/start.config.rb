@@ -4,3 +4,6 @@
 
 # FTP Server Settings
 $ftpserver = {'host' => '[[hostname.example.guru]]', 'id' => '[[ftp-username]]', 'pw' => 'pa$$w0rd', 'remote_root' => '/path/to/remote/project/root'}
+
+# Feed Settings
+$feedset = {'public_root' => 'http://example.com/public/root'}

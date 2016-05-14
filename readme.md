@@ -12,6 +12,8 @@ The feed is currently at <http://effing.work/castbot/castbot-feed.xml>
 
 ## Changelog
 
+- 2016-05-14 v0.2.1
+    - New setting in config.rb allows specifying public root to make castbot more portable and lets me have a dev feed. 
 - 2016-05-14 v0.2
     - Flexible tempo
     - Multiple shakers in polyrhythmic relationships
