@@ -12,6 +12,10 @@ The feed is currently at <http://effing.work/castbot/castbot-feed.xml>
 
 ## Changelog
 
+- 2016-05-19 v0.3
+    - New probability curve starts sparse peaks in middle, disintegrates again. 
+    - With more change, I added more time, and a greater variation in timing. 
+    - Next, I need to start making eps more distinct. 
 - 2016-05-14 v0.2.1
     - New setting in config.rb allows specifying public root to make castbot more portable and lets me have a dev feed. 
 - 2016-05-14 v0.2

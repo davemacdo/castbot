@@ -1,5 +1,5 @@
 // Determine length of piece
-20 + Math.random2 (3,9) => int length;
+Math.random2 (25,50) => int length;
 
 // Number of shakers
 3 => int shakernum;
