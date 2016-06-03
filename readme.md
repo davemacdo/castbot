@@ -12,6 +12,8 @@ The feed is currently at <http://effing.work/castbot/castbot-feed.xml>
 
 ## Changelog
 
+- 2016-06-03 v.0.3.1
+    - Big changes under the hood. Only minor aesthetic updates. 
 - 2016-05-19 v0.3
     - New probability curve starts sparse peaks in middle, disintegrates again. 
     - With more change, I added more time, and a greater variation in timing. 
