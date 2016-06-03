@@ -8,7 +8,7 @@
 
 //if( filename.length() == 0 ) 
 me.dir()+"wav/temp.wav" => string filename;
-Std.atof(me.arg(0)) => float length;
+// Std.atof(me.arg(0)) => float length;
 
 // pull samples from the dac
 dac => Gain g => WvOut w => blackhole;
@@ -23,5 +23,5 @@ null @=> w;
 
 // infinite time loop...
 // ctrl-c will stop it, or modify to desired duration
-// while( true ) 1::second => now;
-length::second => now;
+ while( true ) 1::second => now;
+// length::second => now;
