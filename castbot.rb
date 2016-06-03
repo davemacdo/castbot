@@ -5,7 +5,7 @@ require 'fileutils'
 require_relative './config/config.rb'
 
 Dir.chdir(File.expand_path(File.dirname(__FILE__)))
-castbot_ver = "0.3"
+castbot_ver = "0.3.1"
 today = Time.new
 date_string = today.strftime("%Y-%m-%d")
 test_no = Dir.entries('./mp3').length-3
