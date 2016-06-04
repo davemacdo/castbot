@@ -41,36 +41,36 @@ class ShakeWalk extends Shakers {
 
 }
 
-// Determine length of piece
+// // Determine length of piece
 Math.random2 (45,60) => int length;
 
 // shorter for tests
 // 5 => int length;
 
-// Pick tempo
+// // Pick tempo
 Math.random2f( 100 , 130 ) => float tempo;
 
-// instantiate shakewalks
+// // instantiate shakewalks
 3 => int shakernum;
 ShakeWalk s[shakernum];
 
-// Settings for shakewalks
+// // Settings for shakewalks
 for (0 => int i; i < s.cap(); i++){
 	tempo => s[i].tempo;
 }
 
-// Wind 'em up and set 'em loose!
+// // Wind 'em up and set 'em loose!
 for (0 => int i; i < s.cap(); i++){
 	spork ~ s[i].go(length);
 }
 
-// ROLL TAPE!
-Machine.add ( me.dir()+"rec.ck" ) => int recID;
+// // ROLL TAPE!
+Machine.add ( me.dir()+"rec.ck" + ":" + length ) => int recID;
 
 
-// infinite loop to maintain parent shred
-// while (true) 1::second => now;
+// // infinite loop to maintain parent shred
+// // while (true) 1::second => now;
 
-length::second => now;
-Machine.remove( recID );
+length::second => now; 
+// Machine.remove( recID ); // removed this for RPi compatibility
 Machine.remove( Std.atoi(me.arg(0)) );
