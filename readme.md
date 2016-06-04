@@ -12,7 +12,9 @@ The feed is currently at <http://effing.work/castbot/castbot-feed.xml>
 
 ## Changelog
 
-- 2016-06-03 v.0.3.1
+- 2016-06-04 v0.4
+    - Castbot has a new "song" in its repertoire. It now selects either `shaker-popcorn.ck` or `modal-popcorn.ck`. 
+- 2016-06-03 v0.3.1
     - Big changes under the hood. Only minor aesthetic updates. 
 - 2016-05-19 v0.3
     - New probability curve starts sparse peaks in middle, disintegrates again. 
