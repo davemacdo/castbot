@@ -90,4 +90,5 @@ Machine.add ( me.dir()+"rec.ck" + ":" + lengthwdecay ) => int recID;
 
 lengthwdecay::second => now; 
 // Machine.remove( recID ); // removed this for RPi compatibility
+<<< Std.atoi(me.arg(0) ) >>>;
 Machine.remove( Std.atoi(me.arg(0)) );

@@ -65,12 +65,14 @@ for (0 => int i; i < s.cap(); i++){
 }
 
 // // ROLL TAPE!
-Machine.add ( me.dir()+"rec.ck" + ":" + length ) => int recID;
+length + 3 => int lengthwdecay;
+Machine.add ( me.dir()+"rec.ck" + ":" + lengthwdecay ) => int recID;
 
 
 // // infinite loop to maintain parent shred
 // // while (true) 1::second => now;
 
-length::second => now; 
+lengthwdecay::second => now; 
 // Machine.remove( recID ); // removed this for RPi compatibility
+<<< Std.atoi(me.arg(0) ) >>>;
 Machine.remove( Std.atoi(me.arg(0)) );
