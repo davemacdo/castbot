@@ -5,7 +5,7 @@ require 'fileutils'
 require_relative './config/config.rb'
 
 Dir.chdir(File.expand_path(File.dirname(__FILE__)))
-castbot_ver = "0.4"
+castbot_ver = "0.5"
 today = Time.new
 date_string = today.strftime("%Y-%m-%d")
 test_no = Dir.entries('./mp3').length-3
@@ -14,7 +14,8 @@ rss_feed = []
 pubDate = today.strftime("%a, %d %b %Y %H:%M:%S %Z") #Sun, 08 May 2016 12:00:00 EST
 
 # Shell command to create the audio in ChucK (-s for silent)
-make_wav = "#{$bin_loc['chuck']} castbot.ck -s"
+# make_wav = "#{$bin_loc['chuck']} castbot.ck -s"
+make_wav = "sclang autobot.scd"
 
 # Shell command to convert to mp3 and assign it today's date
 make_mp3 = "#{$bin_loc['avconv']} -i wav/temp.wav mp3/#{mp3file}"
