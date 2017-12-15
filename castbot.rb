@@ -21,7 +21,7 @@ make_wav = "sclang autobot.scd"
 make_mp3 = "#{$bin_loc['avconv']} -i wav/temp.wav mp3/#{mp3file}"
 
 # Run shell commands
-`#{make_wav}`
+# `#{make_wav}`
 `#{make_mp3}`
 
 # Edit mp3 metadata
