@@ -50,11 +50,12 @@ r = Routine.new({
 	//////////////////
 
 	("done after" + ~botStep + "steps").postln;
-	// 10.wait; // Waiting allows audio to render, but sclang doesn't quit.
+	10.wait; // Waiting allows audio to render, but sclang doesn't quit.
+
 	0.exit;
 
 }); // end Routine r
 
 );
 
-r.nextN(5);
+r.play;
