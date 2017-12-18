@@ -30,7 +30,7 @@ r = Routine.new({
 		\amp, 0.05,
 		\pos, Pbrown(-1,1,0.1,inf), // drifting position from far left to far right
 		\pan, Pkey(\pos), // send pan based on \pos
-		\volTweak, 1-(Pkey(\pos).abs), // make things louder in the center
+		\volTweak, (1-(Pkey(\pos).abs)).pow(4), // make things louder in the center
 		\counter, Penvir( (side: nil), //
 			Pfunc({ |e|
 				var in = if (e.pos.isPositive, {true},{false});
@@ -55,7 +55,7 @@ r = Routine.new({
 			})
 		),
 		\wiggleRoom, Pgauss(0, 0.002, inf),
-		\dur, Pwrand([0.1+(Pkey(\wiggleRoom)), Rest(0.1)], [5, 1].normalizeSum, inf),
+		\dur, Pwrand([(0.1+Pkey(\wiggleRoom).keep(1)), Rest(0.1)], [5, 1].normalizeSum, inf),
 		\kill, Pfunc ({ |e|
 			if ( ((e.pos < -0.97) || (e.pos > 0.97)),
 				{ // if the panobird gets too close to the edge, it's gone
@@ -67,7 +67,6 @@ r = Routine.new({
 			);
 		}),
 	);
-
 
 
 
