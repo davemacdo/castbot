@@ -6,12 +6,17 @@ The feed is currently at <http://effing.work/castbot/castbot-feed.xml>
 
 ## Dependencies
 
-- ChucK to generate audio
+- SuperCollider to generate audio (formerly ChucK)
+	- add sclang to $PATH
+	- add ScoreClock quark to SuperCollider
 - libav to convert to MP3
+	- add avconv to $PATH
 - [ruby-mp3info](https://github.com/moumar/ruby-mp3info) Ruby gem (`sudo gem install ruby-mp3info`)
 
 ## Changelog
 
+- 2017-12-15 v.0.5
+	- Castbot begins the transition from ChucK to SuperCollider. Patterns and other control structures in SC are real nice. 
 - 2016-06-04 v0.4
     - Castbot has a new "song" in its repertoire. It now selects either `shaker-popcorn.ck` or `modal-popcorn.ck`. 
 - 2016-06-03 v0.3.1

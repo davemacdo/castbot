@@ -3,7 +3,7 @@
 # change the file name to config.rb
 
 # Binary locations
-$bin_loc = {'chuck' => '/usr/local/bin/chuck', 'avconv' => '/usr/local/bin/avconv'}
+$bin_loc = {'sclang' => '/Applications/SuperCollider/SuperCollider.app/Contents/MacOS/sclang', 'avconv' => '/usr/local/bin/avconv'}
 
 # FTP Server Settings
 $ftpserver = {'host' => '[[hostname.example.guru]]', 'id' => '[[ftp-username]]', 'pw' => 'pa$$w0rd', 'remote_root' => '/path/to/remote/project/root'}
