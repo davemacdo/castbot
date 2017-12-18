@@ -1,7 +1,6 @@
 (
 
 r = Routine.new({
-	var baseFreq = exprand(50,200);
 
 	/////////////////
 	// setup steps //
@@ -11,11 +10,35 @@ r = Routine.new({
 	ScoreClock.tempo = exprand(0.9, 1.1);
 
 
+
 	///////////////////
 	// pattern steps //
 	///////////////////
 
+	SynthDef(\panobird, {
+		|freq=440, out=0, dur=0.5, pan = 0, gate=1, amp=0.2, volTweak=1|
+		var sig, sig2, env;
 
+		sig = Klang.ar(`[ [freq, freq * 2.1, freq * 4.9, freq*0.99, freq * 2.03, freq * 4.88], [0.6, 0.3, 0.1, 0.6, 0.3, 0.1], [0, 0, 0, pi*0.1, pi*0.5, pi*0.9] ]);
+		// sig = Saw.ar(freq);
+		// sig = GrainFM.ar(carfreq:freq, modfreq:freq*0.11);
+
+
+		sig = LPF.ar(sig, (pan.abs).linexp(-1,1,1000, 10000));
+
+		sig = Pan2.ar(sig, pan, 1);
+		env = EnvGen.kr(Env.adsr(attackTime: 0.01, decayTime: 0.1, sustainLevel: 0.3, releaseTime:0.2), gate:gate, doneAction: 2);
+
+		// if(~reverbBus.isKindOf(Bus), {out=~reverbBus.index});
+		Out.ar(out, sig * env * amp * volTweak);
+
+	}).load;
+
+
+
+	///////////////////
+	// pattern steps //
+	///////////////////
 
 	// make a census dictionary if it doesn't exist
 	if (~census.isKindOf(Dictionary).not,
@@ -26,7 +49,7 @@ r = Routine.new({
 
 	~panobird = Pbind(
 		\iteration, Pseries(0,1,inf), // count iterations
-		\instrument, \klang,
+		\instrument, \panobird,
 		\amp, 0.05,
 		\pos, Pbrown(-1,1,0.1,inf), // drifting position from far left to far right
 		\pan, Pkey(\pos), // send pan based on \pos
