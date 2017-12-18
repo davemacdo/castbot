@@ -1,0 +1,13 @@
+#!/bin/bash
+# run castbot
+
+# Make sure the cron uses the right binaries.
+export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games:/home/pi/supercollider/build/lang/:/home/pi/supercollider/build/lang
+
+# I have no idea what this next line does! It does something to resolve a bug in sclang.
+export DISPLAY=:0
+
+ruby /home/pi/castbot/castbot.rb
+
+# For test sclang in isolation
+# sclang /home/pi/castbot/autobot.scd
