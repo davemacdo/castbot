@@ -8,6 +8,14 @@ r = Routine.new({
 
 	ScoreClock.beginScore;
 	ScoreClock.tempo = exprand(0.9, 1.1);
+	~mainScale = [Scale.whole, Scale.majorPentatonic, Scale.iwato, Scale.enigmatic, Scale.partch_u6, Scale.partch_o1, Scale.augmented, Scale.chromatic24].choose;
+
+	// make a census dictionary if it doesn't exist
+	if (~census.isKindOf(Dictionary).not,
+		{~census = Dictionary.newFrom([\panobird, 0]);},
+		{~census.atFail(\panobird,{ ~census.add(\panobird -> 0); })} // if it exists, make sure it has a panobird key
+	);
+
 
 
 
@@ -59,12 +67,6 @@ r = Routine.new({
 	// pattern steps //
 	///////////////////
 
-	// make a census dictionary if it doesn't exist
-	if (~census.isKindOf(Dictionary).not,
-		{~census = Dictionary.newFrom([\panobird, 0]);},
-		{~census.atFail(\panobird,{ ~census.add(\panobird -> 0); })} // if it exists, make sure it has a panobird key
-	);
-
 
 	~panobird = Pbind(
 		\iteration, Pseries(0,1,inf), // count iterations
@@ -82,7 +84,7 @@ r = Routine.new({
 				);
 			})
 		),
-		\scale, Scale.whole,
+		\scale, ~mainScale,
 		\octave, 7,
 		\degree, Penvir( (note:1),
 			Pfunc({ |e|
