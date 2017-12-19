@@ -11,9 +11,9 @@ r = Routine.new({
 
 
 
-	///////////////////
-	// pattern steps //
-	///////////////////
+	//////////////////////
+	// synths and funcs //
+	//////////////////////
 
 	SynthDef(\panobird, {
 		|freq=440, out=0, dur=0.5, pan = 0, gate=1, amp=0.2, volTweak=1|
@@ -34,6 +34,25 @@ r = Routine.new({
 
 	}).load;
 
+	~spawn = {
+		|num=1, species="panobird"|
+		var pattern, index, allSpecies=["panobird"];
+		if (species.isSymbol, {species=species.asString;});
+
+		index = allSpecies.indexOfEqual(species);
+		switch (index,
+			0, {pattern = ~panobird},
+		);
+
+		~census.atFail(species.asSymbol,{ ~census.add(species.asSymbol -> 0) });
+		~census.put(species.asSymbol, (~census.at(species.asSymbol) + num));
+		num.do({
+			pattern.play(ScoreClock);
+		});
+
+		pattern;
+
+	};
 
 
 	///////////////////
@@ -94,14 +113,9 @@ r = Routine.new({
 
 
 	// flock of panobirds
-	(
-		40.do({
-			~census.atFail(\panobird,{ ~census.add(\panobird -> 0) });
-			~census.put(\panobird, (~census.at(\panobird) + 1));
-			~panobird.play(ScoreClock);
-		});
 
-	);
+	~spawn.value(rrand(20,100), "panobird");
+
 
 
 	////////////////////
