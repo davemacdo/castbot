@@ -10,3 +10,4 @@ $ftpserver = {'host' => '[[hostname.example.guru]]', 'id' => '[[ftp-username]]',
 
 # Feed Settings
 $feedset = {'public_root' => 'http://example.com/public/root'}
+$desctag = ''
