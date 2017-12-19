@@ -114,11 +114,7 @@ r = Routine.new({
 	// render audio //
 	//////////////////
 
-<<<<<<< HEAD
-	~score.recordNRT(outputFilePath: ("/home/pi/castbot/wav/temp.wav").standardizePath, headerFormat: "WAV", action: {0.exit});
-=======
 	~score.recordNRT(outputFilePath: ("".resolveRelative ++ "wav/temp.wav").standardizePath, headerFormat: "WAV", action: {0.exit});
->>>>>>> master
 
 
 }); // end Routine r
