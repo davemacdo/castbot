@@ -45,7 +45,7 @@ r = Routine.new({
 	~spawn = {
 		|num=1, species="panobird"|
 		var pattern, index, allSpecies=["panobird"];
-		if (species.isSymbol, {species=species.asString;});
+		if (species.isKindOf(Symbol), {species=species.asString;});
 
 		index = allSpecies.indexOfEqual(species);
 		switch (index,
