@@ -40,8 +40,15 @@ ftp.close
 
 mp3_size = File.size?("./mp3/#{mp3file}")
 mp3_dur = 0
+mp3_hr = 0
+mp3_min = 0
+mp3_sec = 0
 Mp3Info.open("./mp3/#{mp3file}") do |info|
     mp3_dur = info.length.round
+	mp3_hr = "%02d" % (mp3_dur/(60 * 60))
+	mp3_min = "%02d" % (mp3_dur/60)
+	mp3_sec = "%02d" % (mp3_dur%60)
+	mp3_dur = "#{mp3_hr}:#{mp3_min}:#{mp3_sec}"
 end
 
 # If archive directory does not exist, create it
@@ -68,7 +75,7 @@ new_item = [
     "      <pubDate>#{pubDate}</pubDate>",
     "      <itunes:image href=\"#{$feedset['public_root']}/castbot-art.png\" />",
     "      <itunes:keywords>music,robot,experimental,art,bot,electroacoustic,ChucK,Supercollider,SuperCollider</itunes:keywords>",
-    "      <itunes:duration>00:00:#{mp3_dur}</itunes:duration>",
+    "      <itunes:duration>#{mp3_dur}</itunes:duration>",
     "      <itunes:author>David MacDonald</itunes:author>",
     "      <itunes:explicit>no</itunes:explicit>",
     "      <itunes:subtitle>Generated #{date_string}</itunes:subtitle>",
