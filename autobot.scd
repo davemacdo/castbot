@@ -72,7 +72,14 @@ r = Routine.new({
 		\iteration, Pseries(0,1,inf), // count iterations
 		\instrument, \panobird,
 		\amp, 0.05,
-		\pos, Pbrown(-1,1,0.1,inf), // drifting position from far left to far right
+		\accel, Pfunc({ // if the flock is thinning, the rest are more likely to fly off
+			var count = ~census.at(\panobird), thresh = 6, base = 0.1;
+			if ((count < thresh) && (count > 0),
+				{ base + (((thresh-count)/(thresh-1))/10) ;},
+				{ base; }
+			);
+		}),
+		\pos, Pbrown(-1,1,Pkey(\accel).trace,inf), // drifting position from far left to far right
 		\pan, Pkey(\pos), // send pan based on \pos
 		\volTweak, (1-(Pkey(\pos).abs)).pow(4), // make things louder in the center
 		\counter, Penvir( (side: nil), //
@@ -93,7 +100,7 @@ r = Routine.new({
 					{ ~note; }
 				);
 				if (e.iteration == 0,
-					{ ~note = 0; }, // if it's the first iteration, pick a random starting point
+					{ ~note = (rrand(0,6)); }, // if it's the first iteration, pick a random starting point
 					{ ~note; }
 				);
 			})
