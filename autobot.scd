@@ -114,7 +114,7 @@ r = Routine.new({
 	// render audio //
 	//////////////////
 
-	~score.recordNRT(outputFilePath: ("/Users/david/Dropbox/castbot/wav/temp.wav").standardizePath, headerFormat: "WAV", action: {0.exit});
+	~score.recordNRT(outputFilePath: ("".resolveRelative ++ "wav/temp.wav").standardizePath, headerFormat: "WAV", action: {0.exit});
 
 
 }); // end Routine r
