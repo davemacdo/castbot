@@ -11,10 +11,11 @@ r = Routine.new({
 	~mainScale = [Scale.whole, Scale.majorPentatonic, Scale.iwato, Scale.enigmatic, Scale.partch_u6, Scale.partch_o1, Scale.augmented, Scale.chromatic24].choose;
 
 	// make a census dictionary if it doesn't exist
-	if (~census.isKindOf(Dictionary).not,
-		{~census = Dictionary.newFrom([\panobird, 0]);},
-		{~census.atFail(\panobird,{ ~census.add(\panobird -> 0); })} // if it exists, make sure it has a panobird key
-	);
+	if (not(~census.isKindOf(Dictionary))) {
+		~census = Dictionary.newFrom([\panobird, 0]);
+	} {
+		~census.atFail(\panobird,{ ~census.add(\panobird -> 0); }) // if it exists, make sure it has a panobird key
+	};
 
 
 
@@ -45,7 +46,7 @@ r = Routine.new({
 	~spawn = {
 		|num=1, species="panobird"|
 		var pattern, index, allSpecies=["panobird"];
-		if (species.isKindOf(Symbol), {species=species.asString;});
+		if (species.isKindOf(Symbol)) {species=species.asString;};
 
 		index = allSpecies.indexOfEqual(species);
 		switch (index,
@@ -74,51 +75,59 @@ r = Routine.new({
 		\amp, 0.05,
 		\accel, Pfunc({ // if the flock is thinning, the rest are more likely to fly off
 			var count = ~census.at(\panobird), thresh = 6, base = 0.1;
-			if ((count < thresh) && (count > 0),
-				{ base + (((thresh-count)/(thresh-1))/10) ;},
-				{ base; }
-			);
+
+			if ((count < thresh) && (count > 0)) {
+				base + (((thresh-count)/(thresh-1))/10) ;
+			} {
+				base;
+			};
+
 		}),
-		\pos, Pbrown(-1,1,Pkey(\accel).trace,inf), // drifting position from far left to far right
+		\pos, Pbrown(-1,1,Pkey(\accel),inf), // drifting position from far left to far right
 		\pan, Pkey(\pos), // send pan based on \pos
 		\volTweak, (1-(Pkey(\pos).abs)).pow(4), // make things louder in the center
 		\counter, Penvir( (side: nil), //
 			Pfunc({ |e|
 				var in = if (e.pos.isPositive, {true},{false});
-				if (in == ~side,
-					{ ~side },
-					{ ~side = in; 0;} // return 0 if the panobird crossed the 0 boundary
-				);
+
+				if (in == ~side) {
+					~side;
+				} {
+					~side = in; 0;  // return 0 if the panobird crossed the 0 boundary
+				};
 			})
 		),
-		\scale, ~mainScale,
+		\scale, Scale.whole,
 		\octave, 7,
 		\degree, Penvir( (note:1),
 			Pfunc({ |e|
-				if (e.counter == 0,
-					{ ~note = ~note + [-1, 1].choose; }, // step up or down if the panobird flipped
-					{ ~note; }
-				);
-				if (e.iteration == 0,
-					{ ~note = (rrand(0,6)); }, // if it's the first iteration, pick a random starting point
-					{ ~note; }
-				);
-			})
-		),
+				if (e.counter == 0) {
+					~note = ~note + [-1, 1].choose; // step up or down if the panobird flipped
+				} {
+					~note;
+				};
+
+				if (e.iteration == 0) {
+					~note = (rrand(0,6)); // if it's the first iteration, pick a random starting point
+				} {
+					~note;
+				};
+			}) // end Pfunc
+		), // end Penvir for \degree
 		\wiggleRoom, Pgauss(0, 0.002, inf),
 		\dur, Pwrand([(0.1+Pkey(\wiggleRoom).keep(1)), Rest(0.1)], [5, 1].normalizeSum, inf),
 		\kill, Pfunc ({ |e|
-			if ( ((e.pos < -0.97) || (e.pos > 0.97)),
-				{ // if the panobird gets too close to the edge, it's gone
-					postln("panobird down (" ++ e.iteration ++ ")"); // report the loss
-					~census.put(\panobird, (~census.at(\panobird) - 1)); // remove from count
-					postln(~census.getPairs); // report the census
-					nil; },
-				{e}
-			);
-		}),
-	);
-
+			if ( (e.pos < -0.97) || (e.pos > 0.97)) {
+				// if the panobird gets too close to the edge, it's gone
+				postln("panobird down (" ++ e.iteration ++ ")"); // report the loss
+				~census.put(\panobird, (~census.at(\panobird) - 1)); // remove from count
+				postln(~census.getPairs); // report the census
+				nil;
+			} {
+				e;
+			};
+		}); // end \kill
+	)
 
 
 	// flock of panobirds
