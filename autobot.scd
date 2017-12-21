@@ -127,7 +127,7 @@ r = Routine.new({
 				e;
 			};
 		}); // end \kill
-	)
+	);
 
 
 	// flock of panobirds
