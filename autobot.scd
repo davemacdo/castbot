@@ -17,6 +17,13 @@ r = Routine.new({
 		~census.atFail(\panobird,{ ~census.add(\panobird -> 0); }) // if it exists, make sure it has a panobird key
 	};
 
+	// Groups and Busses
+	~limiterGroup = Group.new;
+	~reverbGroup = Group.new;
+	~fxGroup = Group.new;
+	~automataGroup = Group.new;
+
+	~reverbBus = Bus.audio(s, 2);
 
 
 
@@ -42,6 +49,17 @@ r = Routine.new({
 		Out.ar(out, sig * env * amp * volTweak);
 
 	}).load;
+
+	SynthDef.new(\automataReverb, {
+		|in, out=0|
+		var sig;
+		sig = In.ar(in, 2);
+		sig = FreeVerb.ar(sig, mix: 0.4, room:0.5);
+		Out.ar(out, sig);
+	}).load;
+
+	// startup the reverb
+	~reverb = Synth.new(\automataReverb, [\in, ~reverbBus], ~reverbGroup);
 
 	~spawn = {
 		|num=1, species="panobird"|
@@ -72,6 +90,8 @@ r = Routine.new({
 	~panobird = Pbind(
 		\iteration, Pseries(0,1,inf), // count iterations
 		\instrument, \panobird,
+		\group, ~automataGroup,
+		\out, ~reverbBus,
 		\amp, 0.05,
 		\accel, Pfunc({ // if the flock is thinning, the rest are more likely to fly off
 			var count = ~census.at(\panobird), thresh = 6, base = 0.1;
