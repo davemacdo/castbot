@@ -117,7 +117,7 @@ r = Routine.new({
 				};
 			})
 		),
-		\scale, Scale.whole,
+		\scale, ~mainScale,
 		\octave, 7,
 		\degree, Penvir( (note:1),
 			Pfunc({ |e|
