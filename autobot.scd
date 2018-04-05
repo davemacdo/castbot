@@ -8,8 +8,8 @@ r = Routine.new({
 
 	ScoreClock.beginScore;
 	ScoreClock.tempo = exprand(0.9, 1.1);
-	// ~mainScale = [Scale.whole, Scale.majorPentatonic, Scale.iwato, Scale.enigmatic, Scale.partch_u6, Scale.partch_o1, Scale.augmented, Scale.chromatic24].choose;
-	~mainScale = Scale.chromatic24;
+	~mainScale = [Scale.whole, Scale.majorPentatonic, Scale.iwato, Scale.enigmatic, Scale.partch_u6, Scale.partch_o1, Scale.augmented, Scale.chromatic24].choose;
+	// ~mainScale = Scale.chromatic24;
 
 	// make a census dictionary if it doesn't exist
 	if (not(~census.isKindOf(Dictionary))) {
